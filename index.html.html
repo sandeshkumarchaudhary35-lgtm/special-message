@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>A Special Message ❤️</title>
+
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    body {
+
+      width: 100%;
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ff4f81,
+          #7b2cbf
+        );
+
+      color: white;
+
+      font-family:
+        Arial,
+        sans-serif;
+
+      text-align: center;
+
+      overflow: hidden;
+
+      cursor: pointer;
+
+    }
+
+
+    .screen {
+
+      display: none;
+
+      width: 100%;
+      min-height: 100vh;
+
+      justify-content: center;
+      align-items: center;
+
+      padding: 25px;
+
+      flex-direction: column;
+
+    }
+
+
+    .screen.active {
+
+      display: flex;
+
+    }
+
+
+    /* =========================
+       FIRST SCREEN
+    ========================= */
+
+    #startScreen h1 {
+
+      font-size:
+
+        clamp(
+          28px,
+          7vw,
+          55px
+        );
+
+      line-height: 1.4;
+
+      animation:
+        fadeIn 2s ease;
+
+    }
+
+
+    #startScreen p {
+
+      margin-top: 20px;
+
+      font-size:
+
+        clamp(
+          16px,
+          4vw,
+          22px
+        );
+
+      opacity: 0.9;
+
+    }
+
+
+    /* =========================
+       MESSAGE SCREEN
+    ========================= */
+
+    #messageScreen h1 {
+
+      font-size:
+
+        clamp(
+          35px,
+          10vw,
+          70px
+        );
+
+      animation:
+
+        messageAppear
+        1.5s
+        ease;
+
+    }
+
+
+    /* =========================
+       HEART
+    ========================= */
+
+    #heart {
+
+      font-size:
+        60px;
+
+      margin-top:
+        35px;
+
+      cursor:
+        pointer;
+
+      user-select:
+        none;
+
+      transition:
+
+        transform
+        0.8s
+        ease;
+
+    }
+
+
+    #heart:hover {
+
+      transform:
+        scale(1.15);
+
+    }
+
+
+    /* HEART SHAKES */
+
+    .shake {
+
+      animation:
+
+        shake
+        0.5s
+        ease-in-out
+        3;
+
+    }
+
+
+    /* HEART BECOMES BIG */
+
+    .bigHeart {
+
+      animation:
+
+        growHeart
+        1.5s
+        ease
+        forwards;
+
+    }
+
+
+    /* =========================
+       TAP HEART TEXT
+    ========================= */
+
+    #tapHeart {
+
+      margin-top:
+        15px;
+
+      font-size:
+        16px;
+
+      animation:
+
+        pulse
+        1.5s
+        infinite;
+
+    }
+
+
+    /* =========================
+       LOVE MESSAGE
+    ========================= */
+
+    #loveMessage {
+
+      display:
+        none;
+
+      margin-top:
+        30px;
+
+      font-size:
+
+        clamp(
+          50px,
+          15vw,
+          100px
+        );
+
+      font-family:
+        cursive;
+
+      color:
+        #ffdfeb;
+
+      text-shadow:
+
+        0
+        0
+        15px
+        #ff4f81,
+
+        0
+        0
+        40px
+        #ff4f81;
+
+    }
+
+
+    #loveMessage.show {
+
+      display:
+        block;
+
+      animation:
+
+        loveAppear
+        2s
+        ease;
+
+    }
+
+
+    /* =========================
+       ANIMATIONS
+    ========================= */
+
+    @keyframes fadeIn {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          translateY(30px);
+
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          translateY(0);
+
+      }
+
+    }
+
+
+    @keyframes messageAppear {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          scale(0.5);
+
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          scale(1);
+
+      }
+
+    }
+
+
+    @keyframes shake {
+
+      0% {
+
+        transform:
+          rotate(0deg);
+
+      }
+
+      25% {
+
+        transform:
+          rotate(-15deg);
+
+      }
+
+      50% {
+
+        transform:
+          rotate(15deg);
+
+      }
+
+      75% {
+
+        transform:
+          rotate(-15deg);
+
+      }
+
+      100% {
+
+        transform:
+          rotate(0deg);
+
+      }
+
+    }
+
+
+    @keyframes growHeart {
+
+      0% {
+
+        transform:
+          scale(1);
+
+      }
+
+      100% {
+
+        transform:
+          scale(4);
+
+      }
+
+    }
+
+
+    @keyframes pulse {
+
+      0% {
+
+        transform:
+          scale(1);
+
+      }
+
+      50% {
+
+        transform:
+          scale(1.1);
+
+      }
+
+      100% {
+
+        transform:
+          scale(1);
+
+      }
+
+    }
+
+
+    @keyframes loveAppear {
+
+      from {
+
+        opacity:
+          0;
+
+        transform:
+
+          translateY(
+            50px
+          )
+
+          scale(
+            0.5
+          );
+
+      }
+
+      to {
+
+        opacity:
+          1;
+
+        transform:
+
+          translateY(
+            0
+          )
+
+          scale(
+            1
+          );
+
+      }
+
+    }
+
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================
+     FIRST SCREEN
+===================== -->
+
+<div
+  class="screen active"
+  id="startScreen"
+>
+
+  <h1>
+
+    Please tap anywhere<br>
+    on the screen<br>
+    to see your message ❤️
+
+  </h1>
+
+
+  <p>
+
+    A special surprise is waiting...
+
+  </p>
+
+</div>
+
+
+
+<!-- =====================
+     MESSAGE SCREEN
+===================== -->
+
+<div
+  class="screen"
+  id="messageScreen"
+>
+
+  <h1>
+
+    Hello Pratikshya,<br>
+
+    I am Sandesh ❤️
+
+  </h1>
+
+
+  <!-- HEART -->
+
+  <div
+    id="heart"
+  >
+
+    ❤️
+
+  </div>
+
+
+  <!-- TAP HEART -->
+
+  <p
+    id="tapHeart"
+  >
+
+    Tap the heart ❤️
+
+  </p>
+
+
+  <!-- LOVE MESSAGE -->
+
+  <div
+    id="loveMessage"
+  >
+
+    I love you ❤️
+
+  </div>
+
+
+</div>
+
+
+
+<script>
+
+
+  const startScreen =
+
+    document.getElementById(
+      "startScreen"
+    );
+
+
+  const messageScreen =
+
+    document.getElementById(
+      "messageScreen"
+    );
+
+
+  const heart =
+
+    document.getElementById(
+      "heart"
+    );
+
+
+  const loveMessage =
+
+    document.getElementById(
+      "loveMessage"
+    );
+
+
+  const tapHeart =
+
+    document.getElementById(
+      "tapHeart"
+    );
+
+
+
+  /* =========================
+     TAP ANYWHERE
+  ========================= */
+
+  startScreen.addEventListener(
+
+    "click",
+
+    function () {
+
+      startScreen
+        .classList
+        .remove(
+          "active"
+        );
+
+
+      messageScreen
+        .classList
+        .add(
+          "active"
+        );
+
+    }
+
+  );
+
+
+
+  /* =========================
+     TAP THE HEART
+  ========================= */
+
+  heart.addEventListener(
+
+    "click",
+
+    function (event) {
+
+      /* Stop the click affecting anything else */
+
+      event.stopPropagation();
+
+
+      /* Heart shakes */
+
+      heart
+        .classList
+        .add(
+          "shake"
+        );
+
+
+      /* After shaking */
+
+      setTimeout(
+
+        function () {
+
+          heart
+            .classList
+            .remove(
+              "shake"
+            );
+
+
+          /* Heart grows */
+
+          heart
+            .classList
+            .add(
+              "bigHeart"
+            );
+
+
+          /* Remove tap message */
+
+          tapHeart.style.display =
+            "none";
+
+
+          /* Show I love you */
+
+          loveMessage
+            .classList
+            .add(
+              "show"
+            );
+
+        },
+
+        1500
+
+      );
+
+    }
+
+  );
+
+
+</script>
+
+
+</body>
+
+</html>
